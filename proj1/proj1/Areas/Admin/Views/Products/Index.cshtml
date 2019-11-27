@@ -1,0 +1,65 @@
+﻿@model IEnumerable<proj1.Models.Products>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Products List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp; New Product</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <td>
+                @Html.DisplayNameFor(m => m.Name)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Price)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Quantity)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Description)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Brand.BrandName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Providers.ProviderName)
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Brand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Providers.ProviderName)
+        </td>
+        <partial name="_partialViewBtn" model="item.ProductId" />
+    </tr>
+        }
+    </table>
+</div>
+

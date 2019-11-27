@@ -1,0 +1,35 @@
+﻿@model IEnumerable<proj1.Models.Brand>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Product Type List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp; New Brand</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <td>
+                @Html.DisplayNameFor(m => m.BrandName)
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.BrandName)
+        </td>
+        <partial name="_partialViewBtn" model="item.BrandID" />
+    </tr>
+        }
+    </table>
+</div>
+

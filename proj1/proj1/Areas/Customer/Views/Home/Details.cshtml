@@ -1,0 +1,108 @@
+﻿@model proj1.Models.Products
+@using proj1.Extensions
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAcessor
+
+
+<br />
+<h2 class="text-info">Product Details</h2>
+<form method="post" >
+    <div class="p-4 border rounded row">
+
+        <div class="col-7">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Name" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Price" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Quantity"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Quantity" class="form-control" readonly />
+                </div>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Description" class="form-control" readonly />
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Brand"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Brand.BrandName" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Providers"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Providers.ProviderName" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductTypes"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProductTypes.NameType" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label></label> 
+                </div>
+                <div class="col-8">
+                    @{
+                        bool isInBag = false;
+                        List<int> lstCart = HttpContextAcessor.HttpContext.Session.Get<List<int>>("ssShoppingCart");
+                        if (lstCart != null && lstCart.Contains(Model.ProductId))
+                        {
+                            isInBag = true;
+                        }
+                    }
+                    @{
+                        if (isInBag)
+                        {
+                            <button type="submit" value="Remove from Bag" asp-action="remove" asp-route-id="@Model.ProductId" class="btn btn-danger form-control">Remove from Bag</button>
+
+                        }
+                        else
+                        {
+                            <button type="submit" value="Add to Bag" asp-route-id="@Model.ProductId" class="btn btn-primary form-control">Add to Bag</button>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-success">Back to list</a>
+            </div>
+        </div>
+        <div class="col-5 row">
+            <input  hidden asp-for="ProductId" />
+            <img src="@Model.Image" width="100%" height="50%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+            <br /> <br />
+        </div>
+        <br />
+    </div>
+</form>

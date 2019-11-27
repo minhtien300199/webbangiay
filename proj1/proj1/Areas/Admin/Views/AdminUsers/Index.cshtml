@@ -1,0 +1,67 @@
+﻿@model IEnumerable<proj1.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Admin Users List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-area="Identity"asp-page="/Account/Register"  class="btn btn-info">&nbsp; New Admin User</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <td>
+                @Html.DisplayNameFor(m => m.Name)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Email)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.PhoneNumber)
+            </td>
+            <td>
+                Disabled
+            </td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.PhoneNumber)
+        </td>
+        <td>
+            @if(item.LockoutEnd!=null && item.LockoutEnd > DateTime.Now)
+            {
+                <label>Disabled</label>
+            }
+        </td>
+        <td>
+            @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+            {
+                <a type="button" class="btn btn-primary" href="@Url.Action("Edit/"+item.Id)">
+                    Edit
+                </a>
+                <a type="button" class="btn btn-primary" href="@Url.Action("Delete/"+item.Id)">
+                    Delete
+                </a>
+            }
+        </td>
+    </tr>
+        }
+    </table>
+</div>
+

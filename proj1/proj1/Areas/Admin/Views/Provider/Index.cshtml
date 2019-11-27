@@ -1,0 +1,47 @@
+﻿@model IEnumerable<proj1.Models.Providers>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Provider List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp; New Provider</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <td>
+                @Html.DisplayNameFor(m => m.ProviderName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Phone)
+            </td>
+            <td>
+                @Html.DisplayNameFor(m => m.Address)
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.ProviderName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.Address)
+        </td>
+        <partial name="_partialViewBtn" model="item.ProviderID" />
+    </tr>
+        }
+    </table>
+</div>
+

@@ -1,0 +1,23 @@
+﻿@model proj1.Models.Brand
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<h2 class="text-info"> Delete Brand</h2>
+<form asp-action="Delete" method="post">
+    <div class="p-4 border rounded">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="BrandName"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="BrandName" disabled class="form-control" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" asp-route-id="@Model.BrandID" value="Delete" />
+            <a asp-action="Index" class="btn btn-success">Back to list</a>
+        </div>
+    </div>
+</form>

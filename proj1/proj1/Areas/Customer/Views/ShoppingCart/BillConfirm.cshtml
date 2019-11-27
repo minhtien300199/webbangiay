@@ -1,0 +1,15 @@
+﻿@model proj1.Models.ViewModel.ShopingCartModelView
+@{
+    ViewData["Title"] = "BillConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-info>Order Confirm</h2>
+<div class="form-text">
+    Your Order has been submitted!
+</div>
+<br />
+<partial name="~/Views/Shared/_CustomerDetails.cshtml" model="Model.Customer" />
+<br />
+<partial name="~/Views/Shared/_BillDetails.cshtml" model="Model.Products" />
+<a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-success">Back To Products</a>
