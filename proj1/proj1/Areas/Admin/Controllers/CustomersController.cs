@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using proj1.Data;
 using proj1.Models;
+using proj1.Utility;
 
 namespace proj1.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SD.SuperAdminEndUser)]
     [Area("Admin")]
     public class CustomersController : Controller
     {

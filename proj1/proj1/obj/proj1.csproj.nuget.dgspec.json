@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Working !\\Lap Trinh Web\\buoi 8\\proj1\\proj1\\proj1.csproj": {}
+    "C:\\Users\\sdsdd\\OneDrive\\Desktop\\webbangiay\\proj1\\proj1\\proj1.csproj": {}
   },
   "projects": {
-    "D:\\Working !\\Lap Trinh Web\\buoi 8\\proj1\\proj1\\proj1.csproj": {
+    "C:\\Users\\sdsdd\\OneDrive\\Desktop\\webbangiay\\proj1\\proj1\\proj1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Working !\\Lap Trinh Web\\buoi 8\\proj1\\proj1\\proj1.csproj",
+        "projectUniqueName": "C:\\Users\\sdsdd\\OneDrive\\Desktop\\webbangiay\\proj1\\proj1\\proj1.csproj",
         "projectName": "proj1",
-        "projectPath": "D:\\Working !\\Lap Trinh Web\\buoi 8\\proj1\\proj1\\proj1.csproj",
-        "packagesPath": "C:\\Users\\DangKhoa\\.nuget\\packages\\",
-        "outputPath": "D:\\Working !\\Lap Trinh Web\\buoi 8\\proj1\\proj1\\obj\\",
+        "projectPath": "C:\\Users\\sdsdd\\OneDrive\\Desktop\\webbangiay\\proj1\\proj1\\proj1.csproj",
+        "packagesPath": "C:\\Users\\sdsdd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sdsdd\\OneDrive\\Desktop\\webbangiay\\proj1\\proj1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\DangKhoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sdsdd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

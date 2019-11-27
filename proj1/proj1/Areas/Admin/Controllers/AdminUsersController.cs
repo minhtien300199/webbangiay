@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using proj1.Data;
 using proj1.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using proj1.Utility;
 
 namespace proj1.Areas.Admin.Controllers
 {
+    [Authorize(Roles=SD.SuperAdminEndUser)]
     [Area("Admin")]
     public class AdminUsersController : Controller
     {
@@ -55,6 +59,35 @@ namespace proj1.Areas.Admin.Controllers
                 _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
+            return View(applicationUser);
+        }
+
+        //Get Delete
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null || id.Trim().Length == 0)
+            {
+                return NotFound();
+            }
+
+            var userFromDb = await _db.ApplicationUsers.FindAsync(id);
+            if (userFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(userFromDb);
+        }
+        //Post Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePOST(string id, ApplicationUser applicationUser)
+        {
+                ApplicationUser userFromDb = _db.ApplicationUsers.Where(u => u.Id == id).FirstOrDefault();
+            userFromDb.LockoutEnd = DateTime.Now.AddYears(1000);
+               
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+
         }
     }
 }
